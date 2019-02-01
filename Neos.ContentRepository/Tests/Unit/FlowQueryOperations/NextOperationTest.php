@@ -56,7 +56,7 @@ class NextOperationTest extends UnitTestCase
         $this->secondNodeInLevel = $this->createMock(TraversableNodeInterface::class);
         $this->thirdNodeInLevel = $this->createMock(TraversableNodeInterface::class);
 
-        $this->siteNode->expects($this->any())->method('findNodePath')->will($this->returnValue(new NodePath('/site')));
+        $this->siteNode->expects($this->any())->method('findNodePath')->will($this->returnValue(NodePath::fromString('/site')));
         $this->siteNode->expects($this->any())->method('findChildNodes')->will($this->returnValue([
             $this->firstNodeInLevel,
             $this->secondNodeInLevel,
@@ -65,11 +65,11 @@ class NextOperationTest extends UnitTestCase
         $this->mockContext = $this->getMockBuilder(Context::class)->disableOriginalConstructor()->getMock();
 
         $this->firstNodeInLevel->expects($this->any())->method('findParentNode')->will($this->returnValue($this->siteNode));
-        $this->firstNodeInLevel->expects($this->any())->method('findNodePath')->will($this->returnValue(new NodePath('/site/first')));
+        $this->firstNodeInLevel->expects($this->any())->method('findNodePath')->will($this->returnValue(NodePath::fromString('/site/first')));
         $this->secondNodeInLevel->expects($this->any())->method('findParentNode')->will($this->returnValue($this->siteNode));
-        $this->secondNodeInLevel->expects($this->any())->method('findNodePath')->will($this->returnValue(new NodePath('/site/second')));
+        $this->secondNodeInLevel->expects($this->any())->method('findNodePath')->will($this->returnValue(NodePath::fromString('/site/second')));
         $this->thirdNodeInLevel->expects($this->any())->method('findParentNode')->will($this->returnValue($this->siteNode));
-        $this->thirdNodeInLevel->expects($this->any())->method('findNodePath')->will($this->returnValue(new NodePath('/site/third')));
+        $this->thirdNodeInLevel->expects($this->any())->method('findNodePath')->will($this->returnValue(NodePath::fromString('/site/third')));
     }
 
     /**

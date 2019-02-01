@@ -1937,7 +1937,7 @@ class Node implements NodeInterface, CacheAwareInterface, TraversableNodeInterfa
      */
     public function getNodeAggregateIdentifier(): NodeAggregateIdentifier
     {
-        return new NodeAggregateIdentifier($this->getIdentifier());
+        return NodeAggregateIdentifier::fromString($this->getIdentifier());
     }
 
     /**
@@ -1946,7 +1946,7 @@ class Node implements NodeInterface, CacheAwareInterface, TraversableNodeInterfa
      */
     public function getNodeTypeName(): NodeTypeName
     {
-        return new NodeTypeName($this->getNodeType()->getName());
+        return NodeTypeName::fromString($this->getNodeType()->getName());
     }
 
     /**
@@ -1954,7 +1954,7 @@ class Node implements NodeInterface, CacheAwareInterface, TraversableNodeInterfa
      */
     public function getNodeName(): NodeName
     {
-        return new NodeName($this->getName());
+        return NodeName::fromString($this->getName());
     }
 
     /**
@@ -1991,7 +1991,7 @@ class Node implements NodeInterface, CacheAwareInterface, TraversableNodeInterfa
 
     public function findNodePath(): NodePath
     {
-        return new NodePath($this->getPath());
+        return NodePath::fromString($this->getPath());
     }
 
     /**
